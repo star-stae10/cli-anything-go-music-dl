@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  test:
+    name: 单元测试 (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e . pytest
+
+      - name: 运行单元测试
+        run: python -m pytest cli_anything/go_music_dl/tests/test_core.py -v
+
+  build:
+    name: 构建验证
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安装构建工具
+        run: |
+          python -m pip install --upgrade pip build twine
+
+      - name: 构建 wheel 和 sdist
+        run: python -m build
+
+      - name: 校验包格式
+        run: twine check dist/*
+
+      - name: 安装产物验证可导入
+        run: |
+          pip install dist/*.whl
+          python -c "import cli_anything.go_music_dl; print('import OK', cli_anything.go_music_dl.__version__)"

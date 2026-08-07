@@ -108,7 +108,9 @@ CLI_ANYTHING_FORCE_INSTALLED=1 python -m pytest cli_anything/go_music_dl/tests/ 
 ## 文档
 
 - [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) — Agent 使用指南
-- [agent-harness/GO_MUSIC_DL.md](agent-harness/GO_MUSIC_DL.md) — 架构分析（内部）
+- [GO_MUSIC_DL.md](GO_MUSIC_DL.md) — 架构分析（内部）
+- [CONTRIBUTING.md](CONTRIBUTING.md) — 贡献指南
+- [RELEASING.md](RELEASING.md) — 发布指南（构建 / PyPI / GitHub Release）
 
 ## 开源许可
 
