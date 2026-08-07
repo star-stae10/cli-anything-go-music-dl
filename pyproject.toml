@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cli-anything-go-music-dl"
+version = "1.0.0"
+description = "go-music-dl 聚合音乐搜索下载工具的 agent CLI (cli-anything harness)"
+readme = { file = "cli_anything/go_music_dl/README.md", content-type = "text/markdown" }
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+authors = [{ name = "fufuandlook" }]
+dependencies = [
+    "click>=8.0",
+    "requests>=2.25",
+    "colorama>=0.4",
+]
+
+[project.scripts]
+cli-anything-go-music-dl = "cli_anything.go_music_dl.go_music_dl_cli:cli"
+
+[tool.setuptools]
+packages = { find = { include = ["cli_anything.*"] } }
+
+[tool.setuptools.package-data]
+"cli_anything.go_music_dl" = ["skills/*.md"]

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+
+# 本地配置（含用户机器路径，绝不提交）
+*.json
+!.cli-anything-go-music-dl.json.example
+
+# 软件运行时数据（不该进版本库）
+data/
+*.db
+
+# 下载的音乐文件
+*.mp3
+*.flac
+*.m4a
+*.ogg
+*.lrc
+*.jpg
+*.jpeg
+
+# 虚拟环境
+.venv/
+venv/
+env/
