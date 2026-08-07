@@ -24,7 +24,7 @@ pip install cli-anything-go-music-dl
 或从源码安装：
 
 ```bash
-git clone <你的仓库地址>
+git clone https://github.com/star-stae10/cli-anything-go-music-dl.git
 cd cli-anything-go-music-dl
 pip install .
 ```
