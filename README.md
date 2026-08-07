@@ -113,8 +113,8 @@ CLI_ANYTHING_FORCE_INSTALLED=1 python -m pytest cli_anything/go_music_dl/tests/ 
 
 ## 维护状态
 
-本仓库为个人项目，按需维护，不接受外部协作。代码可自由使用（MIT 许可），
-如有使用问题欢迎提 Issue，但不承诺固定时间响应或持续功能迭代。
+个人精力有限，可能无法长期投入维护。欢迎 Fork 本仓库自行改进，
+也欢迎大家提出 Issue 反馈问题，我会在力所能及的范围内处理。
 
 ## 开源许可
 
