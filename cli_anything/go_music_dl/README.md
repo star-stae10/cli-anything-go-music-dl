@@ -15,30 +15,31 @@ go-music-dl 软件（桌面版 / Web 版）的命令行前端，通过软件自�
 ## 安装 CLI
 
 ```bash
-cd agent-harness
-pip install -e .
-which cli-anything-go-music-dl   # 确认已进入 PATH
+# 从 PyPI 安装（推荐）
+pip install cli-anything-go-music-dl
+
+# 或从源码安装
+git clone https://github.com/star-stae10/cli-anything-go-music-dl.git
+cd cli-anything-go-music-dl
+pip install .
 ```
 
 ## 快速开始
 
 ```bash
-# 探测后端（自动发现桌面版/Web 版）
-cli-anything-go-music-dl server --json
+# 1. 连接后端（软件运行中会自动探测；软件未启动时可记住路径并自动拉起）
+cli-anything-go-music-dl server --exe "C:\你的路径\music-dl-desktop-go.exe"
 
-# 搜索（JSON 输出，供脚本/AI 消费）
+# 2. 搜索（JSON 输出，供脚本/AI 消费）
 cli-anything-go-music-dl --json search "周杰伦" --type song --sources netease --limit 5
 
-# 探测歌曲下载地址/大小/码率
+# 3. 探测歌曲下载地址/大小/码率
 cli-anything-go-music-dl --json inspect 5257138 netease
 
-# 下载歌曲（保存到软件下载目录，自带去重/元数据/文件名模板）
-cli-anything-go-music-dl download --keyword "周杰伦" --index 0
-
-# 流式下载到本地目录
+# 4. 下载歌曲（--dir 指定目录并记住，之后默认沿用）
 cli-anything-go-music-dl download --id 5257138 --source netease --stream --dir ./out
 
-# 下载歌词 / 封面
+# 5. 下载歌词 / 封面
 cli-anything-go-music-dl lyrics --keyword "周杰伦" --dir ./out
 cli-anything-go-music-dl cover  --keyword "周杰伦" --dir ./out
 
@@ -61,6 +62,12 @@ cli-anything-go-music-dl delete --collection 5 --song SID --source netease   # �
 cli-anything-go-music-dl delete --name "吹梦到西洲" --dir ./out --yes        # 直接删下载文件
 cli-anything-go-music-dl delete --file ./out/xxx.mp3 --yes                   # 按路径直接删
 ```
+
+## 重要特性
+
+- **下载目录记忆**：`download --dir <目录>` 指定一次后，后续下载默认沿用，直到再次指定
+- **软件自动启动**：`server --exe <exe路径>` 记住软件位置，检测不到时自动静默拉起
+- **Agent 友好**：全部命令 `--json` 输出 + 交互式 REPL + 配套 skill
 
 ## REPL 交互模式
 
