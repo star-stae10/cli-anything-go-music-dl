@@ -115,6 +115,5 @@ agent-harness/
         ├── go_music_dl_cli.py  # Click 入口 + REPL
         ├── core/               # project/settings/records/song 等
         ├── utils/              # backend (HTTP)、html_parse、repl_skin
-        ├── skills/SKILL.md     # agent 技能文件副本
         └── tests/              # TEST.md + test_core.py + test_full_e2e.py
 ```

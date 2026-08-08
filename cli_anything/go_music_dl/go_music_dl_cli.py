@@ -616,10 +616,7 @@ def repl(ctx: click.Context) -> None:
         base = resolve_base_url(server)
     except RuntimeError as e:
         click.echo(f"⚠ {e}", err=True)
-    skill_path = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "skills", "SKILL.md")
-    )
-    skin = ReplSkin("go-music-dl", version=__version__, skill_path=skill_path)
+    skin = ReplSkin("go-music-dl", version=__version__)
     skin.print_banner()
     if not base:
         skin.error("未检测到后端服务。请先启动桌面应用或指定 --server。")

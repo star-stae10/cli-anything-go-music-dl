@@ -71,11 +71,9 @@ gh release create vX.Y.Z \
 - [ ] 单元测试通过：`pytest cli_anything/go_music_dl/tests/test_core.py`
 - [ ] `twine check dist/*` 通过
 - [ ] 全新环境安装：`pip install dist/*.whl` 后可导入、命令可用
-- [ ] skill（`skills/SKILL.md`）已同步最新内容
 - [ ] 包内 README（PyPI 展示）与顶层 README 无过时信息
 
 ## 常见问题
 
 - **403 Forbidden 上传失败**：确认 `~/.pypirc` 里 username 是 `__token__`，password 是完整 token（含 `pypi-` 前缀）
 - **400 版本已存在**：PyPI 不允许重复版本，需升版本号
-- **wheel 里缺文件**：检查 `pyproject.toml` 的 `[tool.setuptools.package-data]` 是否包含 `skills/*.md`
