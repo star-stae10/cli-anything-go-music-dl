@@ -93,7 +93,25 @@ cli-anything-go-music-dl download --id <ID> --source netease --name "歌名" --a
 配套 skill（`go-music-dl-cli`）提供了完整操作指南：操作前必须先确保软件运行、
 搜索策略、音源可靠性排序、限流应对、删除安全等全部踩坑经验。
 
-详见 [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md)。
+### 安装 skill（让 AI Agent 能用）
+
+Agent 通过 skill 学会使用本 CLI，请按以下步骤安装：
+
+```bash
+# 1. 下载 skill 文件
+curl -L -o SKILL.md \
+  https://raw.githubusercontent.com/star-stae10/cli-anything-go-music-dl/master/SKILL.md
+
+# 2. 放到你的 skill 目录（opencode 用 ~/.config/opencode/skills/，Claude 用 ~/.claude/skills/）
+#    opencode:
+mkdir -p ~/.config/opencode/skills/go-music-dl-cli
+mv SKILL.md ~/.config/opencode/skills/go-music-dl-cli/SKILL.md
+#    Claude Code:
+mkdir -p ~/.claude/skills/go-music-dl-cli
+mv SKILL.md ~/.claude/skills/go-music-dl-cli/SKILL.md
+```
+
+> 之后 AI 对话中提到"下载音乐/搜索歌曲/管理歌单"时，会自动加载该 skill 并使用本 CLI。
 
 ## 测试
 
@@ -107,7 +125,8 @@ CLI_ANYTHING_FORCE_INSTALLED=1 python -m pytest cli_anything/go_music_dl/tests/ 
 
 ## 文档
 
-- [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) — Agent 使用指南
+- [SKILL.md](SKILL.md) — Agent skill（下载并安装到 skill 目录，见上文）
+- [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) — Agent 使用指南（skill 内容的文档版）
 - [GO_MUSIC_DL.md](GO_MUSIC_DL.md) — 架构分析（内部）
 - [RELEASING.md](RELEASING.md) — 发布指南（构建 / PyPI / GitHub Release）
 
